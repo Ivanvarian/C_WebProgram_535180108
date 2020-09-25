@@ -1,0 +1,12 @@
+h2 {
+    padding: 15px;
+    border-style: solid;
+    border-color: green;
+    border-width: 2px;
+}
+
+h1 {
+    border-style: solid;
+    border-color: royalblue;
+    border-width: 2px;
+}
