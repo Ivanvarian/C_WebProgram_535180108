@@ -1,5 +1,15 @@
 const express = require('express')
 
-express().listen('3000',()=>{
-    console.log("server ini berjalan")
+
+const port = 3000
+
+const app = express()
+
+app.get('/', function(req, res) {
+    res
+    .send('Hello Word')
+})
+
+app.listen(port, function() {
+    console.log('Server Ready on http://localhost:${port}')
 })
