@@ -16,11 +16,9 @@ const app = express();
 require("./config/passport")(passport);
 
 //db config
-
 const db = require("./config/keys").MongoURI;
 
 //connect mongodb
-
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("mongoDB Terkoneksi..."))
@@ -43,6 +41,10 @@ app.use(
   })
 );
 
+//passport middleware 
+app.use(passport.initialize());
+app.use(passport.session());
+
 //connect flash
 app.use(flash());
 
@@ -50,6 +52,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
   next();
 });
 
